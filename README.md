@@ -1,2 +1,6 @@
 # RTOS-Essentials
-A hands-on RTOS learning series with code examples, tutorials, and visuals, corresponding to my LinkedIn posts.
+feat: Add RTOS task demos for bare-metal vs RTOS comparison
+
+- Implemented 3 concurrent tasks (LED blink, high/low priority prints)
+- Demonstrates FreeRTOS priority-based scheduling
+- Complete Arduino Uno setup with detailed comments
