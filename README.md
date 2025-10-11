@@ -21,3 +21,24 @@ feat: Add task communication demo (global variable vs FreeRTOS queue)
 - **Queue Demo:** Increment + Reset tasks push data safely into a queue, Print task retrieves values in FIFO order without corruption  
 - Demonstrates how FreeRTOS queues solve the limitations of globals by providing atomic, ordered, and synchronized task communication  
 - Clear serial logs highlight the contrast: globals cause overwrites, queues guarantee message delivery  
+
+
+### Week 4–5 – 11/10/2025  
+feat: Add task synchronization and software timer demo  
+
+- **Semaphore Demo:**  
+  Two tasks safely share the Serial port using a **binary semaphore**.  
+  Demonstrates how FreeRTOS ensures mutual exclusion and avoids data overlap when multiple tasks access the same shared resource.  
+
+- **Software Timer Demo:**  
+  Introduces FreeRTOS **software timers** to perform periodic actions without blocking any task.  
+  A timer toggles an LED every 1 second, showing how timers offload periodic tasks from the main scheduler.  
+
+- **Combined Concept:**  
+  Both features are integrated into a single example while the timer toggles an LED, two concurrent tasks print messages using semaphore protection.  
+  This illustrates how synchronization (🔒) and periodic events (⏱️) can coexist smoothly in a multitasking RTOS system.  
+
+- Clear serial logs and LED toggle behavior highlight:  
+  ✅ Safe resource access via semaphores  
+  ✅ Non-blocking periodic actions via software timers  
+  ✅ Deterministic and modular task management under FreeRTOS  
