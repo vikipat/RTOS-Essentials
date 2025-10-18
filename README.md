@@ -39,6 +39,30 @@ feat: Add task synchronization and software timer demo
   This illustrates how synchronization (🔒) and periodic events (⏱️) can coexist smoothly in a multitasking RTOS system.  
 
 - Clear serial logs and LED toggle behavior highlight:  
-  ✅ Safe resource access via semaphores  
-  ✅ Non-blocking periodic actions via software timers  
-  ✅ Deterministic and modular task management under FreeRTOS  
+  • Safe resource access via semaphores  
+  • Non-blocking periodic actions via software timers  
+  • Deterministic and modular task management under FreeRTOS  
+
+
+### Week 6 – 18/10/2025  
+feat: Add task priorities and preemption demo  
+
+- **Concept Overview:**  
+  Demonstrates how FreeRTOS schedules multiple tasks based on their **priority levels**.  
+  A higher-priority task always preempts (interrupts) a lower-priority one whenever it becomes ready to run.  
+  This behavior is at the heart of FreeRTOS’s real-time deterministic scheduling.  
+
+- **Demo (Arduino Uno):**  
+  • **Low Priority Task (Priority 1):** Simulates heavy CPU work to occupy processor time.  
+  • **High Priority Task (Priority 2):** Periodically wakes up and interrupts the low-priority task to run first.  
+  • Both tasks print messages on the Serial Monitor, making preemption clearly visible.  
+
+- **Key Observations:**  
+  • High-priority task takes control whenever it becomes ready, regardless of what the low-priority task is doing.  
+  • Scheduler automatically handles context switching between tasks.  
+  • Serial output shows the low task’s “heavy work” being interrupted mid-cycle by the high-priority task.  
+
+- **Takeaway:**  
+  FreeRTOS preemptive scheduling ensures that time-critical tasks always get CPU access when needed.  
+  Task priorities are a powerful mechanism to control system responsiveness and deterministic behavior in embedded systems.  
+
