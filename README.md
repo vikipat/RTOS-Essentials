@@ -66,3 +66,27 @@ feat: Add task priorities and preemption demo
   FreeRTOS preemptive scheduling ensures that time-critical tasks always get CPU access when needed.  
   Task priorities are a powerful mechanism to control system responsiveness and deterministic behavior in embedded systems.  
 
+
+### Week 7 – 09/11/2025  
+feat: Add ESP32 dual-core scheduling demo  
+
+- **Concept Overview:**  
+  ESP32 runs FreeRTOS natively on **two cores** (Core 0 and Core 1).  
+  This demo shows how tasks can be explicitly assigned to a specific core using  
+  `xTaskCreatePinnedToCore()`, enabling true parallel execution.
+
+- **Demo (ESP32):**  
+  • **TaskLED (Core 0):** Toggles the onboard LED every 500ms  
+  • **TaskCompute (Core 1):** Performs Fibonacci calculations and prints results  
+  • Both tasks run independently on separate CPU cores
+
+- **Key Observations:**  
+  • LED blinks smoothly on Core 0 while heavy computations run on Core 1  
+  • Serial output shows each task’s core using `xPortGetCoreID()`  
+  • Demonstrates *real parallelism*, not just time-sliced multitasking  
+  • Validates dual-core FreeRTOS scheduling and core affinity on ESP32
+
+- **Takeaway:**  
+  ESP32 provides a powerful upgrade for RTOS development — dual-core scheduling  
+  allows CPU-intensive tasks and hardware I/O to run seamlessly in parallel,  
+  significantly improving responsiveness and system throughput.
