@@ -113,3 +113,29 @@ feat: Add Advanced Queues + Event Groups demo (ESP32)
 - **Takeaway:**  
   Use **queues** when you need to move data reliably. Use **event groups** when you need to coordinate multiple readiness signals. Together they form a production-ready RTOS pattern used in IoT, robotics, and embedded systems.
 
+### Week 9 – 29/11/2025  
+feat: Add Mutex vs Binary Semaphore demo (ESP32)
+
+- **Concept Overview:**  
+  This week focuses on **shared resource protection** in FreeRTOS by comparing **Binary Semaphores** and **Mutexes**, with emphasis on **priority inversion** and **priority inheritance** in priority-based schedulers.
+
+- **Demo (ESP32):**  
+  • **LowTask (Low Priority):** Acquires a shared resource and performs work while holding it.  
+  • **MediumTask (Medium Priority):** Runs periodically to create preemption pressure.  
+  • **HighTask (High Priority):** Attempts to acquire the same resource and may block.  
+  • The shared resource is protected using either:
+    - **Binary Semaphore** (no priority inheritance), or  
+    - **Mutex** (supports priority inheritance).  
+  • Runtime diagnostics log task priorities using `uxTaskPriorityGet()`.
+
+- **Key Observations:**  
+  ✅ Binary semaphores are suitable for signaling but **not** for protecting shared resources.  
+  ✅ Mutexes are designed for resource protection and support **priority inheritance**.  
+  ✅ Priority inheritance activates only when a high-priority task blocks on a mutex held by a lower-priority task.  
+  ✅ On ESP32 (dual-core, high-speed CPU), priority inheritance may not always be visually obvious due to short critical sections and scheduling effects.
+
+- **Takeaway:**  
+  Use **mutexes** whenever multiple tasks share a resource in a priority-based system.  
+  Use **binary semaphores** strictly for signaling events.  
+  Understanding priority inversion and inheritance is essential for building reliable, real-world RTOS applications.
+
