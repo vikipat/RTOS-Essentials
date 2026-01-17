@@ -139,3 +139,24 @@ feat: Add Mutex vs Binary Semaphore demo (ESP32)
   Use **binary semaphores** strictly for signaling events.  
   Understanding priority inversion and inheritance is essential for building reliable, real-world RTOS applications.
 
+### Week 10 – 17/01/2026  
+feat: Add RTOS Memory Management demo (ESP32)
+
+- **Concept Overview:**  
+  This week focuses on **RTOS memory management**, highlighting the difference between **dynamic** and **static** task allocation. The goal is to understand how stack and heap memory are used in FreeRTOS and why memory strategy is critical for long-running and safety-critical systems.
+
+- **Demo (ESP32):**  
+  • **DynamicTask:** Created using `xTaskCreate()`, with stack memory allocated from the FreeRTOS heap at runtime.  
+  • **StaticTask:** Created using `xTaskCreateStatic()`, with stack and TCB memory allocated at compile time.  
+  • Both tasks run concurrently on different cores and periodically log execution status.  
+  • Stack usage is monitored using `uxTaskGetStackHighWaterMark()` to validate correct stack sizing.
+
+- **Key Observations:**  
+  ✅ Dynamic task creation relies on heap availability and can fail at runtime if memory is exhausted.  
+  ✅ Static task creation provides deterministic memory usage with fixed stack and TCB addresses.  
+  ✅ Stack high-water marks help validate safe stack sizing and prevent stack overflows.  
+  ✅ Both static and dynamic tasks behave identically at runtime—the difference lies in **reliability and predictability**.
+
+- **Takeaway:**  
+  Scheduling makes an RTOS responsive, but **memory management makes it reliable**.  
+  Use **static allocation** for long-running, safety-critical, or production systems, and reserve **dynamic allocation** for flexible or non-critical components.
